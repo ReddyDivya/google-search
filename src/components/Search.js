@@ -10,11 +10,12 @@ export const Search = () => {
       placeholder="Search Google or type URL"
       onChange={(e) => setText(e.target.value)}
       />
-      <button className="absolute top-1.1 p-1 right-18 text-2xl text-gray-500"
+      {
+        text !== "" && 
+        <button className="absolute top-1.1 p-1 right-18 text-2xl text-gray-500"
         onClick={() => setText('')}
-      >
-        x
-      </button>
+        >x</button>
+      }
     </div>
   )
 }

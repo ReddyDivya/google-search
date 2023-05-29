@@ -12,6 +12,15 @@ export const Routes = () => {
           <Route exact path="/search">
               <Results/>
           </Route>
+          <Route exact path="/images">
+              <Results/>
+          </Route>
+          <Route exact path="/news">
+              <Results/>
+          </Route>
+          <Route exact path="/videos">
+              <Results/>
+          </Route>
         </Switch>
     </div>
   )

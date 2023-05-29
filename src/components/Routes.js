@@ -11,6 +11,15 @@ export const Routes = () => {
             ------------------
             We wrap our application components inside the BrowserRouter component.
             This sets up the router and enables us to use routing functionality in our application.
+
+            Switch
+            -------------------
+            Within the Switch component, we define our routes using the Route component. 
+            The exact prop is used to match the exact path. 
+            We specify the path and the component to render for each route.
+
+            
+
           */
         }
         <BrowserRouter>

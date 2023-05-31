@@ -1,7 +1,16 @@
 import React, {useState} from 'react'
+import {SpeechProvider, useSpeechContext} from 'react-speech';
 
 export const Search = () => {
   const [text, setText] = useState('Elon Musk');
+  const { speak } = useSpeechContext();
+
+  const codeToRead = 'Your code goes here';
+  
+  const handleReadCode = () => {
+    speak({ text: codeToRead });
+  };
+
 
   return (
     <div className=" sm:ml-48 md:ml-72 sm:-mt-10 mt-3">
@@ -10,6 +19,9 @@ export const Search = () => {
       placeholder="Search Google or type URL"
       onChange={(e) => setText(e.target.value)}
       />
+      <button className="absolute top-1.1 p-1 right-18 text-2xl text-gray-500"
+      onClick={handleReadCode}
+      >Read out loud</button>
       {
         text !== "" && 
         <button className="absolute top-1.1 p-1 right-18 text-2xl text-gray-500"

@@ -60,3 +60,4 @@ export const StateContextProvider = ({children}) =>{
 */
 export const useStateContext = () => useContext(StateContext);
 
+//check step 3 in index.js file.

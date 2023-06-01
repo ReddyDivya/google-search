@@ -4,7 +4,7 @@
     The Context API is useful for scenarios where you have data that needs to be accessed by multiple components across the component tree, eliminating the need for prop drilling. 
     It helps simplify the management and sharing of state in your React applications.
 */
-import React, {createContext, useContext, useState} from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 /*
     Step 1. Create a Context
@@ -49,7 +49,7 @@ export const StateContextProvider = ({children}) =>{
             - passing values from the StateContext to entire webApp.
         */
         <StateContext.Provider value={{getResults, results, searchTerm, setSearchTerm, loading}}>
-            {{children}}
+            {children}
         </StateContext.Provider>
     )
 }//StateContextProvider

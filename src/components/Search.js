@@ -1,10 +1,18 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Links } from './Links'; //Navlinks
-import {useDebounce} from 'use-debounce';
+import { useDebounce } from 'use-debounce';
 import { useStateContext } from '../context/StateContextProvider';
 
 export const Search = () => {
   const [text, setText] = useState('Elon Musk');
+  const {setSearchTerm} = useStateContext();//fetching setSearchTerm function from stateContext
+  const [debouncedValue] = useDebounce(text, 300);//debounced
+
+  useEffect(() => {
+    if(debouncedValue)
+      setSearchTerm(debouncedValue);
+
+  }, [debouncedValue]);
   
   return (
     <div className=" sm:ml-48 md:ml-72 sm:-mt-10 mt-3">

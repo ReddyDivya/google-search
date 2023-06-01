@@ -33,6 +33,7 @@ export const Search = () => {
         onClick={() => setText('')}
         >x</button>
       }
+      <Links />
     </div>
   )
 }

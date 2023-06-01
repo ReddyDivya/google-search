@@ -14,8 +14,28 @@ export const StateContextProvider = () =>{
     const getResults = async(url) => {
         setLoading(true); //to show loading icon
 
-        
+        //fetching the response from an api
+        const response = await fetch(`${baseUrl}${url}`,{
+            method : 'GET',
+            headers : {
+                'x-rapidapi-host': 'google-search3.p.rapidapi.com',
+                'x-rapidapi-key': process.env.REACT_APP_API_KEY,
+            },
+        });
+
+        const data = await response.json();
+
+        setResults(data); //set fetched data
+        setLoading(false); //stop showing loading icon
+
     }//getResults
+
+    return (
+        /* passing values from the statecontext to entire webApp*/
+        <StateContext.Provider value={{getResults, results, searchTerm, setSearchTerm, loading}}>
+            
+        </StateContext.Provider>
+    )
 
 }//StateContextProvider
 

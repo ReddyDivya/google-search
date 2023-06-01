@@ -11,14 +11,11 @@ const App = () => {
     
       <div className={darkTheme ? 'dark' : ''}>
           <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-200 min-h-screen">
-              <BrowserRouter>
-                  <Navbar setDarkTheme={setDarkTheme} darkTheme={darkTheme}/>
-                  <Routing/>
-                  <Footer/>
-              </BrowserRouter>
+            <Navbar setDarkTheme={setDarkTheme} darkTheme={darkTheme}/>
+            <Routing/>
+            <Footer/>
           </div>
       </div>
-    
   )
 }
 

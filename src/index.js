@@ -3,7 +3,7 @@ import * as ReactDOMClient from 'react-dom/client';
 import App from './App';
 import './global.css';
 import { BrowserRouter as Router} from 'react-router-dom'
-import StateContextProvider from './context/StateContextProvider';
+import {StateContextProvider} from './context/StateContextProvider';
 
 /*
     BrowserRouter

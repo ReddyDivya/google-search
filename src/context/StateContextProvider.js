@@ -1,17 +1,20 @@
-//Context API
+/*
+    Context API
+    ----------------------------------------------------------
+    The Context API is useful for scenarios where you have data that needs to be accessed by multiple components across the component tree, eliminating the need for prop drilling. 
+    It helps simplify the management and sharing of state in your React applications.
+*/
 import React, {createContext, useContext, useState} from 'react';
 
 /*
-    Step 1. Creating StateContext object using createContext
+    Step 1. Create a Context
     ----------------------------------------------------------
     - Creating StateContext object using createContext will return 'Provider' & 'Consumer'
-
-
-*/    
-
+*/
 const StateContext = createContext();
 const baseUrl = 'https://google-search3.p.rapidapi.com/api/v1'; //google search api
 
+//Step 2: Create a Provider component
 export const StateContextProvider = ({children}) =>{
     //result, loading, searchTerm
     const [results, setResults] = useState([]);//results
@@ -52,7 +55,7 @@ export const StateContextProvider = ({children}) =>{
 }//StateContextProvider
 
 /*
-    Step 4. Consume the Context
+    Step 3. Consume the Context
     --------------------------------------------------
     - To access the shared data, use the Consumer component or the useContext hook. 
       This allows you to access the data within the wrapped component.
@@ -60,4 +63,4 @@ export const StateContextProvider = ({children}) =>{
 */
 export const useStateContext = () => useContext(StateContext);
 
-//check step 3 in index.js file.
+//check step 4 in index.js file.

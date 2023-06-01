@@ -20,9 +20,10 @@ const root = ReactDOMClient.createRoot(container);
 // Render an element to the root.
 root.render(
     /*
-        Step:3 Wrap Components with Provider
+        Step:4 Wrap Components with Provider
         ----------------------------------------
         - Wrap the components that need access to the shared data with the Provider component, and pass the data as the value prop.
+        -  App component consumes the data provided by the StateContextProvider component using the useContext hook. 
     */
     //entire webApp has access to the state context
     <StateContextProvider>

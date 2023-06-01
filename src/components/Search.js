@@ -1,4 +1,7 @@
 import React, {useState} from 'react'
+import { Links } from './Links'; //Navlinks
+import {useDebounce} from 'use-debounce';
+import { useStateContext } from '../context/StateContextProvider';
 
 export const Search = () => {
   const [text, setText] = useState('Elon Musk');

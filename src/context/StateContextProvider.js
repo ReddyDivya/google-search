@@ -4,7 +4,7 @@ import React, {createContext, useContext, useState} from 'react';
 const StateContext = createContext();
 const baseUrl = 'https://google-search3.p.rapidapi.com/api/v1'; //google search api
 
-export const StateContextProvider = () =>{
+export const StateContextProvider = ({children}) =>{
     //result, loading, searchTerm
     const [results, setResults] = useState([]);//results
     const [loading, setLoading] = useState(false);//loding
@@ -33,7 +33,7 @@ export const StateContextProvider = () =>{
     return (
         /* passing values from the statecontext to entire webApp*/
         <StateContext.Provider value={{getResults, results, searchTerm, setSearchTerm, loading}}>
-            
+            {{children}}
         </StateContext.Provider>
     )
 

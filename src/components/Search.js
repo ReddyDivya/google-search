@@ -8,6 +8,12 @@ export const Search = () => {
   const {setSearchTerm} = useStateContext();//fetching setSearchTerm function from stateContext
   const [debouncedValue] = useDebounce(text, 300);//debounced
 
+  /*
+    useDebounce hook
+    --------------------------------------------
+    the useDebounce hook is not a built-in hook, but it is a custom hook that can be implemented to add debounce functionality to your components. 
+    The purpose of the useDebounce hook is to delay the execution of a function until a certain period of inactivity has passed.
+  */
   useEffect(() => {
     if(debouncedValue)
       setSearchTerm(debouncedValue);

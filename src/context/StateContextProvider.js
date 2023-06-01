@@ -1,7 +1,14 @@
 //Context API
 import React, {createContext, useContext, useState} from 'react';
 
-//Step 1. Creating StateContext
+/*
+    Step 1. Creating StateContext object using createContext
+    ----------------------------------------------------------
+    - Creating StateContext object using createContext will return 'Provider' & 'Consumer'
+
+
+*/    
+
 const StateContext = createContext();
 const baseUrl = 'https://google-search3.p.rapidapi.com/api/v1'; //google search api
 
@@ -33,8 +40,10 @@ export const StateContextProvider = ({children}) =>{
 
     return (
         /* 
-            Step 2: StateContextProvider
-            - passing values from the statecontext to entire webApp.
+            Step 2: Create a Provider (StateContextProvider)
+            ----------------------------------------------------------
+            - The Provider component is responsible for providing the data to all the child components that are interested in consuming it.
+            - passing values from the StateContext to entire webApp.
         */
         <StateContext.Provider value={{getResults, results, searchTerm, setSearchTerm, loading}}>
             {{children}}
@@ -42,6 +51,12 @@ export const StateContextProvider = ({children}) =>{
     )
 }//StateContextProvider
 
-//Step 3. exporting the StateContext to the entire the webApp
+/*
+    Step 4. Consume the Context
+    --------------------------------------------------
+    - To access the shared data, use the Consumer component or the useContext hook. 
+      This allows you to access the data within the wrapped component.
+    - exporting the StateContext to the entire the webApp
+*/
 export const useStateContext = () => useContext(StateContext);
 

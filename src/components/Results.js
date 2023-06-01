@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
 import { useLocation } from 'react-router-dom'; 
+import {Loading} from './Loading';//to show loading icon
+import { useStateContext } from '../context/StateContextProvider';//to fetch data from state context
 
 /*
   useLocation

@@ -12,7 +12,8 @@ import React, { createContext, useContext, useState } from 'react';
     - Creating StateContext object using createContext will return 'Provider' & 'Consumer'
 */
 const StateContext = createContext();
-const baseUrl = 'https://google-search3.p.rapidapi.com/api/v1'; //google search api
+// const baseUrl = 'https://google-search3.p.rapidapi.com/api/v1'; //google search api
+const baseUrl = 'https://google-search72.p.rapidapi.com/search'; //google search api
 
 //Step 2: Create a Provider component
 export const StateContextProvider = ({children}) =>{
@@ -29,8 +30,8 @@ export const StateContextProvider = ({children}) =>{
         const response = await fetch(`${baseUrl}${url}`,{
             method : 'GET',
             headers : {
-                'x-rapidapi-host': 'google-search3.p.rapidapi.com',
-                'x-rapidapi-key': process.env.REACT_APP_API_KEY,
+                'X-RapidAPI-Host': 'google-search72.p.rapidapi.com',
+                'X-RapidAPI-Key': 'c8737bdfd9msh382abd883a864d5p10f865jsn28ce3f7335fc',
             },
         });
 

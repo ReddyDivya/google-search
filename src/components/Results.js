@@ -29,7 +29,8 @@ export const Results = () => {
       }
       else //to fetch data which is other than videos
       {
-        getResults(`${location.pathname}/q=${searchTerm}&num=40`);
+        // getResults(`${location.pathname}/q=${searchTerm}&num=40`);
+        getResults(`/search/q=Elon Musk&num=40`);
       }
     }
   }, [searchTerm, location.pathname]); //run this only when searchTerm, location.pathname are changed

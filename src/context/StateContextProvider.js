@@ -13,8 +13,8 @@ import axios from 'axios';
     - Creating StateContext object using createContext will return 'Provider' & 'Consumer'
 */
 const StateContext = createContext();
-// const baseUrl = 'https://google-search3.p.rapidapi.com/api/v1'; //google search api
-const baseUrl = 'https://google-search72.p.rapidapi.com'; //google search api
+const baseUrl = 'https://google-search3.p.rapidapi.com/api/v1'; //google search api
+// const baseUrl = 'https://google-search72.p.rapidapi.com'; //google search api
 
 //Step 2: Create a Provider component
 export const StateContextProvider = ({children}) =>{
@@ -28,31 +28,37 @@ export const StateContextProvider = ({children}) =>{
         setLoading(true); //to show loading icon
 
         //fetching the response from an api
-        // const response = await fetch(`${baseUrl}${type}`,{
-        //     method : 'GET',
-        //     headers: {
-        //         'X-RapidAPI-Key': 'c8737bdfd9msh382abd883a864d5p10f865jsn28ce3f7335fc',
-        //         'X-RapidAPI-Host': 'google-search72.p.rapidapi.com'
-        //       }
-        // });
-        axios.get(`${baseUrl}${type}`, {
+        const response = await fetch(`${baseUrl}${type}`,{
             method : 'GET',
-            params: {
-                num: '10',
-            },
             headers: {
                 'X-RapidAPI-Key': 'c8737bdfd9msh382abd883a864d5p10f865jsn28ce3f7335fc',
                 'X-RapidAPI-Host': 'google-search72.p.rapidapi.com'
-            }
-        }).then(function (response) {
-            console.log(response);// handle success
-            const data = response.data;
-            console.log('data >> '+ data);
-            setResults(data); //set fetched data
-            setLoading(false); //stop showing loading icon
+              }
+        });
 
-            console.log('results >> '+ results);
-        })
+        const data = await response.data;
+
+        setResults(data); //set fetched data
+        setLoading(false); //stop showing loading icon
+
+        // axios.get(`${baseUrl}${type}`, {
+        //     method : 'GET',
+        //     params: {
+        //         num: '10',
+        //     },
+        //     headers: {
+        //         'X-RapidAPI-Key': 'c8737bdfd9msh382abd883a864d5p10f865jsn28ce3f7335fc',
+        //         'X-RapidAPI-Host': 'google-search72.p.rapidapi.com'
+        //     }
+        // }).then(function (response) {
+        //     console.log(response);// handle success
+        //     const data = response.data;
+        //     console.log('data >> '+ data);
+        //     setResults(data); //set fetched data
+        //     setLoading(false); //stop showing loading icon
+
+        //     console.log('results >> '+ results);
+        // })
     }//getResults
 
     return (

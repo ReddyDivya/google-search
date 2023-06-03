@@ -5,7 +5,6 @@
     It helps simplify the management and sharing of state in your React applications.
 */
 import React, { createContext, useContext, useState } from 'react';
-import axios from 'axios';
 
 /*
     Step 1. Create a Context
@@ -13,52 +12,54 @@ import axios from 'axios';
     - Creating StateContext object using createContext will return 'Provider' & 'Consumer'
 */
 const StateContext = createContext();
-const baseUrl = 'https://google-search3.p.rapidapi.com/api/v1'; //google search api
-// const baseUrl = 'https://google-search72.p.rapidapi.com'; //google search api
+// const baseUrl = 'https://google-search3.p.rapidapi.com/api/v1'; //google search api
+// const baseUrl = 'https://google-search74.p.rapidapi.com'; //google search api
 
 //Step 2: Create a Provider component
 export const StateContextProvider = ({children}) =>{
     //result, loading, searchTerm
     const [results, setResults] = useState([]);//results
     const [loading, setLoading] = useState(false);//loding
-    const [searchTerm, setSearchTerm] = useState('Elon Musk');//search text
+    const [searchTerm, setSearchTerm] = useState('Nike');//search text
 
     //fetch results
     const getResults = async(type) => {
         setLoading(true); //to show loading icon
 
-        //fetching the response from an api
-        const response = await fetch(`${baseUrl}${type}`,{
-            method : 'GET',
+        // const baseUrl = 'https://google-search74.p.rapidapi.com/?query=Nike&limit=10';
+        const baseUrl = 'https://google-search74.p.rapidapi.com';
+        const options = {
+            method: 'GET',
             headers: {
                 'X-RapidAPI-Key': 'c8737bdfd9msh382abd883a864d5p10f865jsn28ce3f7335fc',
-                'X-RapidAPI-Host': 'google-search72.p.rapidapi.com'
-              }
-        });
+                'X-RapidAPI-Host': 'google-search74.p.rapidapi.com'
+            }
+        };
 
-        const data = await response.data;
+        try {
+            const response = await fetch(`${baseUrl}${type}`, options);
+            // const data = await response.text();//working
+            const data = await response.json();
+            setResults(data.results); //set fetched data
+            setLoading(false); //stop showing loading icon
+        } catch (error) {
+            console.error(error);
+        }
 
-        setResults(data); //set fetched data
-        setLoading(false); //stop showing loading icon
-
-        // axios.get(`${baseUrl}${type}`, {
+        //fetching the response from an api
+        // const response = await fetch(`${baseUrl}${type}`,{
         //     method : 'GET',
-        //     params: {
-        //         num: '10',
-        //     },
         //     headers: {
         //         'X-RapidAPI-Key': 'c8737bdfd9msh382abd883a864d5p10f865jsn28ce3f7335fc',
-        //         'X-RapidAPI-Host': 'google-search72.p.rapidapi.com'
-        //     }
-        // }).then(function (response) {
-        //     console.log(response);// handle success
-        //     const data = response.data;
-        //     console.log('data >> '+ data);
-        //     setResults(data); //set fetched data
-        //     setLoading(false); //stop showing loading icon
+        //         'X-RapidAPI-Host': 'google-search74.p.rapidapi.com'
+        //       }
+        // });
+        // console.log('response >> '+ response);
+        // const data = await response.json();
+        // console.log('data >> '+ data.length);
 
-        //     console.log('results >> '+ results);
-        // })
+        // setResults(data); //set fetched data
+        // setLoading(false); //stop showing loading icon
     }//getResults
 
     return (

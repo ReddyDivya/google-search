@@ -26,7 +26,6 @@ export const StateContextProvider = ({children}) =>{
     const getResults = async(type) => {
         setLoading(true); //to show loading icon
 
-        // const baseUrl = 'https://google-search74.p.rapidapi.com/?query=Nike&limit=10';
         const baseUrl = 'https://google-search74.p.rapidapi.com';
         const options = {
             method: 'GET',
@@ -39,7 +38,7 @@ export const StateContextProvider = ({children}) =>{
         try {
             const response = await fetch(`${baseUrl}${type}`, options);
             const data = await response.json();
-            
+
             setResults(data.results); //set fetched data
             setLoading(false); //stop showing loading icon
         } catch (error) {

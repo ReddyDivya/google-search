@@ -38,28 +38,13 @@ export const StateContextProvider = ({children}) =>{
 
         try {
             const response = await fetch(`${baseUrl}${type}`, options);
-            // const data = await response.text();//working
             const data = await response.json();
+            
             setResults(data.results); //set fetched data
             setLoading(false); //stop showing loading icon
         } catch (error) {
             console.error(error);
         }
-
-        //fetching the response from an api
-        // const response = await fetch(`${baseUrl}${type}`,{
-        //     method : 'GET',
-        //     headers: {
-        //         'X-RapidAPI-Key': 'c8737bdfd9msh382abd883a864d5p10f865jsn28ce3f7335fc',
-        //         'X-RapidAPI-Host': 'google-search74.p.rapidapi.com'
-        //       }
-        // });
-        // console.log('response >> '+ response);
-        // const data = await response.json();
-        // console.log('data >> '+ data.length);
-
-        // setResults(data); //set fetched data
-        // setLoading(false); //stop showing loading icon
     }//getResults
 
     return (
